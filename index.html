@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bySivaR</title>
+    <link rel="icon" href="./icon1.png"/>
+    <style>
+        *{
+            text-align: center;
+        }
+        pre{
+            font-size: 200%;
+        }
+    </style>
+  </head>
+  <body>
+    <!-- <img src="./RR Insignia.gif"/> -->
+        <p style=" font-size: 200%">
+            Number to Binary code converter
+          </p>
+          <input style="font-size: 150%;" placeholder="num to convert to Binary" dir="ltr" /><br><br>
+          <button style="font-size: 120%;">convert</button>
+          <b><pre></pre></b>
+
+    <script>
+      const NumToBi = (n) => {
+        m = n;
+        c = 1;
+        main = 0;
+        while (c) {
+          c = 0;
+          p = 0;
+          child = "";
+          while (m >= 2 ** p++) {
+            //1>1
+            if (c > 0) {
+              child += "0";
+            }
+            c++;
+          }
+          if (c > 0 || m == 1) {
+            child = "1" + child;
+          }
+          // console.log(child);
+          main = main + child * 1;
+          m = m - 2 ** (p - 2);
+        }
+        //   console.log(main);
+        return main;
+      };
+
+      document
+        .getElementsByTagName("button")[0]
+        .addEventListener("click", () => {
+          var num = document.getElementsByTagName("input")[0].value;
+        //   console.log(num);
+        var display = document.getElementsByTagName('pre')[0]
+        // document.body.appendChild(display)
+        display.innerHTML=NumToBi(num)
+        });
+    </script>
+  </body>
+</html>
